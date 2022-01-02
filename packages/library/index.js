@@ -79,6 +79,23 @@ pzem004t.prototype.getAddress = async function () {
   return toAddress(responseBuffer.slice(3))
 }
 
+/**
+ * @param {number} value new alarm thresold value in watt, must be between [0; 65535]
+ */
+pzem004t.prototype.setAlarmThresold = async function (value) {
+  if (!Number.isInteger(value)) {
+    throw new Error('The value must be an integer')
+  }
+  if (value < 0 || value > 65535) {
+    throw new Error('The value must be between [0; 65535]')
+  }
+  const buf = Buffer.from([this.address, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00])
+  buf.writeUInt16BE(value, 4)
+  const responseBuffer = await read(this, buf)
+  return buf.compare(responseBuffer) === 0
+}
+
+
 pzem004t.prototype.close = function () {
   return this.port.close()
 }
