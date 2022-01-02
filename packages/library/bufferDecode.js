@@ -57,3 +57,10 @@ module.exports.toAlarm = function (buffer) {
 module.exports.toAlarmThresold = function (buffer) {
   return buffer.readUInt16BE()
 }
+
+/**
+ * @param {Buffer} buffer
+ */
+module.exports.toAddress = function (buffer) {
+  return buffer.readUInt16BE()
+}
