@@ -1,0 +1,30 @@
+{
+  "name": "pzem-004t-api",
+  "version": "0.1.0",
+  "description": "API for module PZEM-004T",
+  "author": "Bertrand SIFRÉ",
+  "homepage": "https://github.com/bertrand-sifre/PZEM-004T#readme",
+  "license": "MIT",
+  "main": "src/server.js",
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertrand-sifre/PZEM-004T.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/bertrand-sifre/PZEM-004T/issues"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "pzem-004t": "^0.1.0"
+  }
+}
