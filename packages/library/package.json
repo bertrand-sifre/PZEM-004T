@@ -1,6 +1,6 @@
 {
   "name": "pzem-004t",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "node library to read on TTL USB the sensor PZEM-004T",
   "main": "index.js",
   "scripts": {
