@@ -4,8 +4,6 @@ const { crc16modbus } = require('crc')
 let buffer = undefined
 /** @type {(Buffer) => void} */
 let promiseResolve
-/** @type {Promise<Buffer>} */
-const promise = new Promise((resolve) => promiseResolve = resolve)
 /**
  * @param {Buffer} data 
  */
@@ -39,6 +37,8 @@ module.exports.read = async function (pzem, data) {
   if (pzem.debug) console.log('tx:', data.toString('hex'))
   buffer = undefined // clear buffer
   pzem.port.write(data)
+  /** @type {Promise<Buffer>} */
+  const promise = new Promise((resolve) => promiseResolve = resolve)
   const response = await promise
   if (pzem.debug) console.log('rx:', response.toString('hex'))
   return response
