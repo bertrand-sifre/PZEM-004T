@@ -6,7 +6,6 @@ const { read, concatBuffer } = require('./privateFunction')
  * @property {string} path - The path of serial port | COM1 on windows
  * @property {boolean} [debug] - Enable debug mode
  * @property {number} [address] - address of slave default 0x01, max 0xF7
- * @property {number} [timeout] - timeout to get response in ms
  */
 
 /**
@@ -19,7 +18,6 @@ const pzem004t = function (options) {
   this.port.on('data', concatBuffer)
   if (this.debug) console.log('Connected to ', this.path)
   this.address = options.address || 1
-  this.timeout = options.timeout || 10
 }
 
 pzem004t.prototype.getMeasurements = async function () {
