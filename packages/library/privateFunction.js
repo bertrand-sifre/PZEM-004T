@@ -1,4 +1,4 @@
-const { crc16modbus } = require('crc')
+const { checkCrc, pushCrc } = require('./crc')
 
 /** @type {Buffer} */
 let buffer = undefined
@@ -13,18 +13,9 @@ module.exports.concatBuffer = function (data) {
   } else {
     buffer = Buffer.concat([buffer, data])
   }
-  if (isValid()) {
+  if (checkCrc(buffer)) {
     promiseResolve(buffer)
   }
-}
-
-const isValid = function () {
-  const length = buffer.length - 2
-  if (length < 1) {
-    return false
-  }
-  const crc = crc16modbus(buffer.slice(0, length))
-  return crc === buffer.readUInt16LE(length)
 }
 
 /**
@@ -32,9 +23,7 @@ const isValid = function () {
  * @param {Buffer} data 
  */
 module.exports.read = async function (pzem, data) {
-  const length = data.length - 2
-  const crc = crc16modbus(data.slice(0, length))
-  data.writeUInt16LE(crc, length)
+  pushCrc(data)
   if (pzem.debug) console.log('tx:', data.toString('hex'))
   buffer = undefined // clear buffer
   pzem.port.write(data)

@@ -9,7 +9,6 @@
   "author": "Bertrand SIFRE",
   "license": "ISC",
   "dependencies": {
-    "crc": "^4.1.0",
     "serialport": "^9.2.8"
   }
 }
