@@ -3,7 +3,7 @@ NodeJS library implementation on Serial Port.
 
 ## Basic schema
 
-Here a picture
+![schema](./readme/schema.jpg)
 
 ## Features
 
@@ -15,7 +15,7 @@ Here a picture
 
 ## Quick Start
 ```javascript
-const pzem004t = require('pzem004t')
+const pzem004t = require('pzem-004t')
 
 // init device on port
 const device = new pzem004t({ path: "COM1"})
