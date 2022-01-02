@@ -117,6 +117,16 @@ pzem004t.prototype.resetEnergy = async function () {
   return buf.compare(responseBuffer) === 0
 }
 
+/**
+ * Calibration method, Warning it's a broadcast method.
+ * Takes 3 to 4 seconds. 
+ */
+pzem004t.prototype.calibration = async function () {
+  const buf = Buffer.from([0xF8, 0x41, 0x37, 0x21, 0x00, 0x00])
+  const responseBuffer = await read(this, buf)
+  return buf.compare(responseBuffer) === 0
+}
+
 pzem004t.prototype.close = function () {
   return this.port.close()
 }
