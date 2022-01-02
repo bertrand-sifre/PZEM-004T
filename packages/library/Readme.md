@@ -38,7 +38,7 @@ device.close()
 | debug | Boolean | false | false | enable debug trace
 | address | Number (int) | false | 1 | set slave address
 
-###Methods
+### Methods
  * getMeasurments()
  * getVoltage()
  * getCurrent()
