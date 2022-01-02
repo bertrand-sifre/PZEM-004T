@@ -32,8 +32,9 @@ const isValid = function () {
  * @param {Buffer} data 
  */
 module.exports.read = async function (pzem, data) {
-  const crc = crc16modbus(data.slice(0, 6))
-  data.writeUInt16LE(crc, 6)
+  const length = data.length - 2
+  const crc = crc16modbus(data.slice(0, length))
+  data.writeUInt16LE(crc, length)
   if (pzem.debug) console.log('tx:', data.toString('hex'))
   buffer = undefined // clear buffer
   pzem.port.write(data)

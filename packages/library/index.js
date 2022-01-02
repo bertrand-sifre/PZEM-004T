@@ -111,6 +111,12 @@ pzem004t.prototype.setAddress = async function (value) {
   return buf.compare(responseBuffer) === 0
 }
 
+pzem004t.prototype.resetEnergy = async function () {
+  const buf = Buffer.from([this.address, 0x42, 0x00, 0x00])
+  const responseBuffer = await read(this, buf)
+  return buf.compare(responseBuffer) === 0
+}
+
 pzem004t.prototype.close = function () {
   return this.port.close()
 }
