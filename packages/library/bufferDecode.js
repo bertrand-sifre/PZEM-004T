@@ -50,3 +50,10 @@ module.exports.toPowerFactor = function (buffer) {
 module.exports.toAlarm = function (buffer) {
   return buffer.slice(0, 2).compare(Buffer.from([0xFF, 0xFF])) === 0
 }
+
+/**
+ * @param {Buffer} buffer
+ */
+module.exports.toAlarmThresold = function (buffer) {
+  return buffer.readUInt16BE()
+}

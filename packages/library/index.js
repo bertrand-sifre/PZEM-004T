@@ -1,5 +1,5 @@
 const SerialPort = require('serialport')
-const { toAlarm, toCurrent, toEnergy, toFrequency, toPower, toPowerFactor, toVoltage } = require('./bufferDecode')
+const { toAlarm, toAlarmThresold, toCurrent, toEnergy, toFrequency, toPower, toPowerFactor, toVoltage } = require('./bufferDecode')
 const { read, concatBuffer } = require('./privateFunction')
 /**
  * @typedef {Object} options
@@ -67,6 +67,11 @@ pzem004t.prototype.getPowerFactor = async function () {
 pzem004t.prototype.getAlarm = async function () {
   const responseBuffer = await read(this, Buffer.from([this.address, 0x04, 0x00, 0x09, 0x00, 0x02, 0x00, 0x00]))
   return toAlarm(responseBuffer.slice(3))
+}
+
+pzem004t.prototype.getAlarmThresold = async function () {
+  const responseBuffer = await read(this, Buffer.from([this.address, 0x03, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00]))
+  return toAlarmThresold(responseBuffer.slice(3))
 }
 
 pzem004t.prototype.close = function () {
