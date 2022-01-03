@@ -25,6 +25,8 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "mongodb": "^4.2.2",
+    "node-schedule": "^2.1.0",
     "pzem-004t": "^0.1.0"
   }
 }

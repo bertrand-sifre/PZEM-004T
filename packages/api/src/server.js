@@ -3,8 +3,10 @@ const package = require('../package.json')
 const express = require('express')
 const app = express()
 const { LISTEN_PORT } = require('./env')
+const datastore = require('./services/datastore')
+const schedule = require('./services/schedule')
 
-app.use(express.json())
+app.use(express.json({ strict: false }))
 app.use(require('./routes'))
 
 app.get('/', function (req, res) {
@@ -14,10 +16,16 @@ app.get('/', function (req, res) {
   })
 })
 
-app.listen(LISTEN_PORT, function () {
+app.listen(LISTEN_PORT, async function () {
   console.log(`Api listen on ${LISTEN_PORT}`)
+  // connect to datastore
+  await datastore.connect()
+  // relaunch all job
+  await schedule.reloadJob()
 })
 
 app.on('close', function () {
   require('./services/pzem-004t').close()
+  schedule.cancel()
+  datastore.close()
 })
