@@ -1,6 +1,6 @@
 {
   "name": "pzem-004t-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "API for module PZEM-004T",
   "author": "Bertrand SIFRÉ",
   "homepage": "https://github.com/bertrand-sifre/PZEM-004T#readme",
@@ -27,6 +27,6 @@
     "express": "^4.17.2",
     "mongodb": "^4.2.2",
     "node-schedule": "^2.1.0",
-    "pzem-004t": "^0.1.0"
+    "pzem-004t": "^0.1.1"
   }
 }
