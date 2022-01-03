@@ -19,6 +19,7 @@ const pzem004t = require('pzem-004t')
 
 // init device on port
 const device = new pzem004t({ path: "COM1"})
+device.connect()
 
 // do some stuff
 const data = await device.getMeasurements()

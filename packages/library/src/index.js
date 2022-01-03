@@ -14,10 +14,13 @@ const { read, concatBuffer } = require('./privateFunction')
 const pzem004t = function (options) {
   this.path = options.path
   this.debug = options.debug || false
+  this.address = options.address || 1
+}
+
+pzem004t.prototype.connect = function () {
   this.port = new SerialPort(this.path, { baudRate: 9600, parity: 'none', stopBits: 1, dataBits: 8 })
   this.port.on('data', concatBuffer)
-  if (this.debug) console.log('Connected to ', this.path)
-  this.address = options.address || 1
+  if (this.debug) console.log('Connected to serial:', this.path)
 }
 
 pzem004t.prototype.getMeasurements = async function () {
