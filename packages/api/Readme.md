@@ -21,10 +21,10 @@ An express server API for module PZEM-004T on a Serial Port.
 * POST /reset-energy
 * POST /calibration
 
-# Environment variables
-| Name | Required | Default | Description|
-| --- | --- | --- | --- | --- |
-| SERAIL_PORT| true | X | The serial port|
+## Environment variables
+| Name | Required | Default | Description |
+| --- | --- | --- | --- |
+| SERAIL_PORT| true | X | The serial port |
 | LISTEN_PORT | false | 3000 | The listen port for server |
 | DEBUG | false | false | Enable Debug log |
 | MONGO_URL | true | undefined | The mongo URL to connection |

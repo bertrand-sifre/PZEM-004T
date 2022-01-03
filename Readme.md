@@ -3,3 +3,4 @@ Project to get an basic interface for module PZEM-004T on a serial port.
 
 ## Packages 
  * [nodeJS library](./packages/library)
+ * [API server](./packages/api)

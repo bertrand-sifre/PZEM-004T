@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "API for module PZEM-004T",
   "author": "Bertrand SIFRÉ",
-  "homepage": "https://github.com/bertrand-sifre/PZEM-004T#readme",
+  "homepage": "https://github.com/bertrand-sifre/PZEM-004T/tree/main/packages/api#readme",
   "license": "MIT",
   "main": "src/server.js",
   "directories": {
